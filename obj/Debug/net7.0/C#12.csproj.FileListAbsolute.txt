@@ -1,0 +1,14 @@
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\bin\Debug\net7.0\C#12.exe
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\bin\Debug\net7.0\C#12.deps.json
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\bin\Debug\net7.0\C#12.runtimeconfig.json
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\bin\Debug\net7.0\C#12.dll
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\bin\Debug\net7.0\C#12.pdb
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\obj\Debug\net7.0\C#12.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\obj\Debug\net7.0\C#12.AssemblyInfoInputs.cache
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\obj\Debug\net7.0\C#12.AssemblyInfo.cs
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\obj\Debug\net7.0\C#12.csproj.CoreCompileInputs.cache
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\obj\Debug\net7.0\C#12.dll
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\obj\Debug\net7.0\refint\C#12.dll
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\obj\Debug\net7.0\C#12.pdb
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\obj\Debug\net7.0\C#12.genruntimeconfig.cache
+C:\Users\guillermo.giachetti\Documents\Cd\Cii Sharp _C#\C#12\obj\Debug\net7.0\ref\C#12.dll
