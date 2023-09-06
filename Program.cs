@@ -26,12 +26,12 @@ namespace While{
                         Console.WriteLine($"Es correcto el nombre [Si/No]..¿?");
                         escrito = Console.ReadLine();
                         if(!string.IsNullOrWhiteSpace(escrito.Trim()) && escrito.Substring(0,1).Equals("S",StringComparison.OrdinalIgnoreCase)){
-                            Console.WriteLine($"Excelente {Mayus(nombre)}..!");
+                            Console.WriteLine($"\nExcelente {Mayus(nombre)}..!\n");
                             break;
                         }else Console.WriteLine($"Tu respuesta es No..");
                     }else Console.WriteLine("Nombre incorrecto, vuelve a intentarlo por favor..!");
                 } // while
-                Console.WriteLine($"Hola Bienvenido {Mayus(nombre)}..!");
+                Console.WriteLine($"\nHola Bienvenido {Mayus(nombre)}..!\n");
                 //TODO : while end;
                 await Task.Delay(2000);
                 Console.WriteLine($"\nEl Programa se está ejecutándo con éxito..!\n");
