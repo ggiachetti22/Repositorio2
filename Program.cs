@@ -25,11 +25,10 @@ namespace While{
                     if(Regex.IsMatch(nombre,EscCorrect)){
                         Console.WriteLine($"Es correcto el nombre [Si/No]..¿?");
                         escrito = Console.ReadLine();
-                        if(!string.IsNullOrWhiteSpace(escrito.Trim()) && Mayus(escrito.Substring(0,2)) == "Si" && escrito.Equals("Si",StringComparison.OrdinalIgnoreCase)){
+                        if(!string.IsNullOrWhiteSpace(escrito.Trim()) && escrito.Substring(0,1).Equals("S",StringComparison.OrdinalIgnoreCase)){
                             Console.WriteLine($"Excelente {Mayus(nombre)}..!");
                             break;
-                        }
-                        else Console.WriteLine($"Tu respuesta es No..");
+                        }else Console.WriteLine($"Tu respuesta es No..");
                     }else Console.WriteLine("Nombre incorrecto, vuelve a intentarlo por favor..!");
                 } // while
                 Console.WriteLine($"Hola Bienvenido {Mayus(nombre)}..!");
