@@ -22,7 +22,7 @@ namespace While{
                 while(true){
                     Console.WriteLine($"Escribe tu nombre por favor..");
                     nombre = Console.ReadLine();
-                    if(Regex.IsMatch(nombre,EscCorrect)){
+                    if(Regex.IsMatch(nombre,@"^[A-Za-z]+$")){
                         Console.WriteLine($"Es correcto el nombre [Si/No]..¿?");
                         escrito = Console.ReadLine();
                         if(!string.IsNullOrWhiteSpace(escrito.Trim()) && escrito.Substring(0,1).Equals("S",StringComparison.OrdinalIgnoreCase)){
@@ -31,17 +31,62 @@ namespace While{
                         }else Console.WriteLine($"Tu respuesta es No..");
                     }else Console.WriteLine("Nombre incorrecto, vuelve a intentarlo por favor..!");
                 } // while
-                Console.WriteLine($"\nHola Bienvenido {Mayus(nombre)}..!\n");
+                Console.WriteLine($"\nHola Bienvenido {Nombre = Mayus(nombre)}..!\n");
                 //TODO : while end;
                 //TODO : delegado;
                 // bool? EsPar = null;
-                string nEs = "";
+                string nEs,EOp,Salir;
+                int NE,NN;
                 int numEscrito;
-                Console.WriteLine($"Escrime un número para saber el cuadrádo");
-                Delegado elDelegado = new Delegado(num => num * num);
-                int.TryParse(nEs = Console.ReadLine(), out int NE);
-                if(NE != 0) Console.WriteLine($"\nNúmero {NE} al cuadrado = ({elDelegado(NE)})\n");
-                else Console.WriteLine($"\nNúmero {NE = 2} al cuadrado = ({elDelegado(NE)})\n");
+                Random Azar = new Random();
+                Delegado elDelegadoCuadrado = new Delegado((a,b) => a * a);
+                Delegado elDelegadoSuma = new Delegado((a,b) => a + b);
+                Delegado elDelegadoResta = new Delegado((a,b) => a - b);
+                Delegado elDelegadoMulti = new Delegado((a,b) => a * b);
+                Delegado elDelegadoDiv = new Delegado((a,b) => a / b);
+                //TODO : while Operaciones;
+                while(true){
+                    Console.WriteLine($"\nElige que tipo de operación deseas realizar..¿?\n[Cuadrado \"!\", Suma \"+\", Resta \"-\", Multiplicación \"*\", División \"/\"]..¿?");
+                    EOp = Console.ReadLine();
+                    await Task.Delay(1000);
+                    //TODO : Suma, Resta, Multiplicación, División, Cuadrado;
+                    if(!string.IsNullOrWhiteSpace(EOp.Trim())){
+                        if(EOp.Trim().Substring(0,1).Equals("C",StringComparison.OrdinalIgnoreCase) && !String.IsNullOrWhiteSpace(EOp) || EOp.Trim().Substring(0,1) == "!"){
+                            Console.WriteLine($"Muy bien {Nombre}..! elegiste al \"Cuadrado\".\nEscribe a continuación el número para la operación.");
+                            int.TryParse(nEs = Console.ReadLine(), out NE);
+                            if(NE != 0) Console.WriteLine($"\nNúmero ejedido ({NE})\nMultiplicación: {NE} * {NE} = ({elDelegadoCuadrado(NE,NE)})\n");
+                            // Console.WriteLine($"\nNúmeros ejedidos {(NE,Azar.Next(NE,NN = NE * 4))} azar: ({NN})\nMultiplicación: {NE} * {NN} = ({elDelegadoMulti(NE,NN)})\n");
+                            else continue;
+                        }else if(EOp.Trim().Substring(0,1).Equals("S",StringComparison.OrdinalIgnoreCase) && !String.IsNullOrWhiteSpace(EOp.Trim()) || EOp.Trim().Substring(0,1) == "+"){
+                            Console.WriteLine($"Muy bien {Nombre}..! elegiste \"Suma\".\nEscribe a continuación el número para la operación.");
+                            int.TryParse(nEs = Console.ReadLine(), out NE);
+                            if(NE != 0) Console.WriteLine($"\nNúmeros ejedidos {(NE,Azar.Next(NE,NN = NE * 4))} azar: ({NN})\nSuma: {NE} + {NN} = ({elDelegadoSuma(NE,NN)})\n");
+                            else continue;
+                        }else if(EOp.Trim().Substring(0,1).Equals("R",StringComparison.OrdinalIgnoreCase) && !String.IsNullOrWhiteSpace(EOp.Trim()) || EOp.Trim().Substring(0,1) == "-"){
+                            Console.WriteLine($"Muy bien {Nombre}..! elegiste \"Resta\".\nEscribe a continuación el número para la operación.");
+                            int.TryParse(nEs = Console.ReadLine(), out NE);
+                            if(NE != 0) Console.WriteLine($"\nNúmeros ejedidos {(Azar.Next(NE,NN = NE * 4),NE)} azar: ({NN})\nResta: {NN} - {NE} = ({elDelegadoResta(NN,NE)})\n");
+                            else continue;
+                        }else if(EOp.Trim().Substring(0,1).Equals("M",StringComparison.OrdinalIgnoreCase) && !String.IsNullOrWhiteSpace(EOp.Trim()) || EOp.Trim().Substring(0,1) == "*"){
+                            Console.WriteLine($"Muy bien {Nombre}..! elegiste \"Multiplicación\".\nEscribe a continuación el número para la operación.");
+                            int.TryParse(nEs = Console.ReadLine(), out NE);
+                            if(NE != 0) Console.WriteLine($"\nNúmeros ejedidos {(NE,Azar.Next(NE,NN = NE * 4))} azar: ({NN})\nMultiplicación: {NE} * {NN} = ({elDelegadoMulti(NE,NN)})\n");
+                            else continue;
+                        }else if(EOp.Trim().Substring(0,1).Equals("D",StringComparison.OrdinalIgnoreCase) && !String.IsNullOrWhiteSpace(EOp.Trim()) || EOp.Trim().Substring(0,1) == "/"){
+                            Console.WriteLine($"Muy bien {Nombre}..! elegiste \"División\".\nEscribe a continuación el número para la operación.");
+                            int.TryParse(nEs = Console.ReadLine(), out NE);
+                            if(NE != 0) Console.WriteLine($"\nNúmeros ejedidos {(Azar.Next(NE,NN = NE * 4),NE)} azar: ({NN})\nDivisión: {NN} / {NE} = ({elDelegadoDiv(NN,NE)})\n");
+                            else continue;
+                        }else Console.WriteLine($"\nNo se registró un dato.\nReintenta nuevamente..!\n");
+                    }else continue;
+                    //TODO : salir;
+                    Console.WriteLine($"{Nombre}.. Deseas continuar con las operaciones [Si/No]..¿?");
+                    Salir = Console.ReadLine();
+                    if(!String.IsNullOrWhiteSpace(Salir) && Salir.Substring(0,1).Equals("N",StringComparison.OrdinalIgnoreCase)) break;
+                    else Console.WriteLine($"Bueno {Nombre}.. continúa con las operaciones..!");
+                    //TODO : salir end;
+                } //TODO : while Operaciones end;
+
                 //TODO : delegado end;
                 //TODO : Pares;
                 StreamWriter? archivo = null;
@@ -66,13 +111,13 @@ namespace While{
                 Console.WriteLine("\nVista final de la lista pares: {0}",String.Join(",",listaPares));
                 Console.WriteLine($"");
                 //TODO : Pares end;
-                await Task.Delay(2000);
-                Console.WriteLine($"\nEl Programa se está ejecutándo con éxito..!\n");
                 //TODO : Resultado final;
                 using(archivo = new StreamWriter(@"C:\Users\guillermo.giachetti\Desktop\NotaRapida.txt", append: false)){
-                archivo.WriteLine($"Imprime el Resultado para {Mayus(nombre)}.\nNúmero al cuadrado = ({elDelegado(NE)})\n\nVista final de la lista simple: [{String.Join(",",lista)}]\n\nVista final de la lista números pares: [{String.Join(",",listaPares)}]\n\nHasta Luego {Mayus(nombre)} y gracias por participar\n.. 😉 ..\n");
+                archivo.WriteLine($"Imprime el Resultado para {Mayus(nombre)}.\nVista final de la lista simple: [{String.Join(",",lista)}]\n\nVista final de la lista números pares: [{String.Join(",",listaPares)}]\n\nHasta Luego {Mayus(nombre)} y gracias por participar\n.. 😉 ..\n");
                 }
                 //TODO : Resultado final end;
+                await Task.Delay(2000);
+                Console.WriteLine($"\nEl Programa se está ejecutando con éxito..!\n");
                 // Console.WriteLine($"");
                 // await Task.Delay(1000);
             }
@@ -89,7 +134,7 @@ namespace While{
         public static string Mayus(string n){
             return n.Trim().Substring(0,1).ToUpper() + n.Trim().Substring(1).ToLower();
         } // Mayus(string)
-        delegate int Delegado(int a);
+        delegate int Delegado(int a, int b);
         // delegate bool DelegaPares(int num);
         public static bool Pares(int num){
             if(num % 2 == 0) return true;
