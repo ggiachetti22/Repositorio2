@@ -86,9 +86,40 @@ namespace While{
                     else Console.WriteLine($"Bueno {Nombre}.. continúa con las operaciones..!");
                     //TODO : salir end;
                 } //TODO : while Operaciones end;
-
                 //TODO : delegado end;
                 //TODO : Pares;
+                //TODO : Predicate;
+                Predicate<Empleado> PreExisteNomb = new Predicate<Empleado>(ExisteNomb);
+                Predicate<Empleado> PrediEdadMayor = new Predicate<Empleado>(EdadMayor);
+                List<Empleado> personas = new List<Empleado>();
+
+                Empleado P1 = new Empleado();
+                P1.Nombre = "Maria";
+                P1.Edad = 27;
+
+                Empleado P2 = new Empleado();
+                P2.Nombre = "Juan";
+                P2.Edad = 32;
+
+                Empleado P3 = new Empleado();
+                P3.Nombre = "Ana";
+                P3.Edad = 17;
+
+                personas.AddRange(new Empleado[] {P1,P2,P3});
+
+                Console.WriteLine($"\nVista previa de Lista Empleados: [{String.Join(",",personas)}]\n");
+
+                bool ExisteUser = personas.Exists(PreExisteNomb);
+                bool EsMayor = personas.Exists(PrediEdadMayor);
+
+                foreach(Empleado per in personas) Console.WriteLine($"Empleado {per.Nombre} Edad: {per.Edad}");
+
+                Console.WriteLine($"\nExiste el usuario \"Juan\"..¿? {ExisteUser}\n");
+                // foreach(Empleado p in personas) Console.WriteLine($"{p.Nombre} de {p.Edad} años. Es Mayor de edad.. ¿? {PrediEdadMayor(p)}.");
+                personas.ForEach(p => Console.WriteLine($"{p.Nombre} de {p.Edad} años. Es Mayor de edad.. ¿? {PrediEdadMayor(p)}."));
+                Console.WriteLine($"");
+
+                //TODO : Predicate end;
                 StreamWriter? archivo = null;
                 int valor = 1;
                 Random azar = new Random();
@@ -135,11 +166,18 @@ namespace While{
             return n.Trim().Substring(0,1).ToUpper() + n.Trim().Substring(1).ToLower();
         } // Mayus(string)
         delegate int Delegado(int a, int b);
-        // delegate bool DelegaPares(int num);
         public static bool Pares(int num){
             if(num % 2 == 0) return true;
             else return false;
         } // pares;
+        static bool ExisteNomb(Empleado emp){
+            if(emp.Nombre.Equals("juan",StringComparison.OrdinalIgnoreCase)) return true;
+            else return false;
+        }
+        static bool EdadMayor(Empleado emp){
+            if(emp.Edad >= 18) return true;
+            else return false;
+        }
         public class Empleado{
             private string nombre;
             private int edad;
